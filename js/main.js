@@ -138,4 +138,28 @@
 
 
 })(jQuery);
+const form = document.getElementById('registerForm');
+const messageDiv = document.getElementById('message');
+
+form.addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevents form submission
+    
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+
+    if (password !== confirmPassword) {
+        showMessage('Passwords do not match!', 'error');
+        return;
+    }
+
+    // Simulate form submission (you can replace this with real backend logic)
+    showMessage(`Welcome, ${username}! Your account has been created.`, 'success');
+});
+
+function showMessage(message, type) {
+    messageDiv.textContent = message;
+    messageDiv.style.color = type === 'success' ? 'green' : 'red';
+}
 
